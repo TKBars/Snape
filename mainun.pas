@@ -40,11 +40,18 @@ implementation
 { TMainForm }
 
 procedure TMainForm.OpenTable(Sender: TObject);
+var
+  Item: TMenuItem;
 begin
-  Application.CreateForm(TTableForm, AForms[(Sender as TMenuItem).tag]);
-  With AForms[(Sender as TMenuItem).tag] do begin
-    Caption := (Sender as TMenuItem).Caption;
-    Tag := (Sender as TMenuItem).tag;
+  Item := TMenuItem(Sender);
+  If AForms[Item.Tag] = nil then begin
+    Application.CreateForm(TTableForm, AForms[Item.Tag]);
+    With AForms[Item.Tag] do begin
+      Caption := Item.Caption;
+      Tag := Item.Tag;
+    end;
+  end else begin
+    AForms[Item.Tag].ShowOnTop;
   end;
 end;
 

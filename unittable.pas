@@ -18,10 +18,11 @@ type
     DBGrid: TDBGrid;
     DBNavigator: TDBNavigator;
     SQLQuery: TSQLQuery;
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
   private
     { private declarations }
   public
-    procedure FormCreate(Sender: TObject);
     { public declarations }
   end;
 
@@ -34,13 +35,21 @@ implementation
 {$R *.lfm}
 
 procedure TTableForm.FormCreate(Sender: TObject);
+var
+  i: integer;
 begin
-  for i := 0 to High(ATables[(Sender as TTableForm).Tag].MassOfFields) do
+  for i := 0 to High(ATables[Tag].MassOfFields) do
   With DBGrid do begin
-    Columns.Add.FieldName := ATables[(Sender as TTableForm).Tag].MassOfFields[i].Name;
-    Columns[i].Title.Caption := ATables[(Sender as TTableForm).Tag].MassOfFields[i].Caption;
-    Columns[i].Width := ATables[(Sender as TTableForm).Tag].MassOfFields[i].Width;
+    Columns.Add.FieldName := ATables[Tag].MassOfFields[i].Name;
+    Columns[i].Title.Caption := ATables[Tag].MassOfFields[i].Caption;
+    Columns[i].Width := ATables[Tag].MassOfFields[i].Width;
   end;
+end;
+
+procedure TTableForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  CloseAction := caFree;
+  AForms[Tag] := nil;
 end;
 
 initialization

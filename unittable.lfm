@@ -6,6 +6,7 @@ object TableForm: TTableForm
   Caption = 'TableForm'
   ClientHeight = 239
   ClientWidth = 320
+  OnClose = FormClose
   LCLVersion = '1.2.4.0'
   Visible = True
   object DBNavigator: TDBNavigator

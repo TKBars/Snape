@@ -12,34 +12,33 @@ type
     Caption, Name: string;
     Width: integer;
     FieldType: TFieldType;
-    constructor Create(Capitosha, Nameosha: string; Widthosha: integer; FieldTypeosha: TFieldType);
+    constructor Create(FiCaption, FiName: string; FiWidth: integer; FiFieldType: TFieldType);
   end;
 
   TMyTable = class
     Caption, Name: string;
     MassOfFields: array of TMyField;
-    constructor Create(Capitosha, Nameosha: string);
+    constructor Create(TabCaption, TabName: string);
+    //procedure RegField();
   end;
 
 var
   ATables: array of TMyTable;
 
-  i, n: integer;
-
 implementation
 
-constructor  TMyTable.Create(Capitosha, Nameosha: string);
+constructor TMyTable.Create(TabCaption, TabName: string);
   begin
-     Caption := Capitosha;
-     Name := Nameosha;
+     Caption := TabCaption;
+     Name := TabName;
   end;
 
-constructor TMyField.Create(Capitosha, Nameosha: string; Widthosha: integer; FieldTypeosha: TFieldType);
+constructor TMyField.Create(FiCaption, FiName: string; FiWidth: integer; FiFieldType: TFieldType);
   begin
-     Caption := Capitosha;
-     Name := Nameosha;
-     Width := Widthosha;
-     FieldType := FieldTypeosha;
+     Caption := FiCaption;
+     Name := FiName;
+     Width := FiWidth;
+     FieldType := FiFieldType;
   end;
 
 initialization
