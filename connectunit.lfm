@@ -5,19 +5,19 @@ object Connection: TConnection
   VerticalOffset = 157
   Width = 240
   object SQLTransaction: TSQLTransaction
-    Active = False
+    Active = True
     Database = IBConnection
     left = 144
     top = 40
   end
   object IBConnection: TIBConnection
-    Connected = False
+    Connected = True
     LoginPrompt = False
     DatabaseName = 'TIMETABLE.fdb'
     KeepConnection = False
     Password = 'masterkey'
     Transaction = SQLTransaction
-    UserName = 'sysdba'
+    UserName = 'SYSDBA'
     LogEvents = []
     left = 48
     top = 40

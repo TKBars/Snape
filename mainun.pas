@@ -22,7 +22,6 @@ type
     procedure OpenTable(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MExitClick(Sender: TObject);
-    procedure MMenuClick(Sender: TObject);
   private
     MassOfReference: array of TMenuItem;
     //procedure ErrorMessage();
@@ -41,6 +40,8 @@ implementation
 
 procedure TMainForm.OpenTable(Sender: TObject);
 var
+  i: integer;
+  cmd: string;
   Item: TMenuItem;
 begin
   Item := TMenuItem(Sender);
@@ -49,6 +50,24 @@ begin
     With AForms[Item.Tag] do begin
       Caption := Item.Caption;
       Tag := Item.Tag;
+
+      cmd := 'SELECT * FROM ' + ATables[Tag].Name;
+
+      for i := 0 to High(ATables[Tag].MassOfFields) do
+        if not (ATables[Tag].MassOfFields[i].FarTable = nil) then
+          cmd += ' INNER JOIN ' + ATables[Tag].MassOfFields[i].FarTable.Name
+                       + ' ON ' + ATables[Tag].MassOfFields[i].FarTable.Name + '.' + ATables[Tag].MassOfFields[i].FarField
+                       +  ' = ' + ATables[Tag].MassOfFields[i].Name;
+           ShowMessage(cmd);
+      SQLQuery.Close;
+      SQLQuery.SQL.Text := cmd;
+      SQLQuery.Open;
+
+      for i := 0 to High(ATables[Tag].MassOfFields) do
+      With DBGrid.Columns.Items[i] do begin
+        Title.Caption := ATables[Item.Tag].MassOfFields[i].Caption;
+        Width := ATables[Item.Tag].MassOfFields[i].Width;
+      end;
     end;
   end else begin
     AForms[Item.Tag].ShowOnTop;
@@ -79,12 +98,6 @@ procedure TMainForm.MExitClick(Sender: TObject);
 begin
   Close;
 end;
-
-procedure TMainForm.MMenuClick(Sender: TObject);
-begin
-
-end;
-
 
 //procedure TMainForm.ErrorMessage();
 //begin

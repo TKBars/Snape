@@ -1,23 +1,31 @@
 object TableForm: TTableForm
-  Left = 309
+  Left = 399
   Height = 239
-  Top = 195
-  Width = 320
+  Top = 208
+  Width = 439
   Caption = 'TableForm'
   ClientHeight = 239
-  ClientWidth = 320
+  ClientWidth = 439
+  Constraints.MinHeight = 320
+  Constraints.MinWidth = 480
   OnClose = FormClose
   LCLVersion = '1.2.4.0'
   Visible = True
   object DBNavigator: TDBNavigator
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = DBGrid
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 32
+    Left = 40
     Height = 31
-    Top = 208
-    Width = 241
-    Anchors = [akTop, akLeft, akBottom]
+    Top = 200
+    Width = 352
+    Anchors = [akBottom]
     BevelOuter = bvNone
+    BorderSpacing.Top = 8
+    BorderSpacing.Bottom = 8
     ChildSizing.EnlargeHorizontal = crsScaleChilds
     ChildSizing.EnlargeVertical = crsScaleChilds
     ChildSizing.ShrinkHorizontal = crsScaleChilds
@@ -25,18 +33,9 @@ object TableForm: TTableForm
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 100
     ClientHeight = 31
-    ClientWidth = 241
+    ClientWidth = 352
     Options = []
     TabOrder = 0
-  end
-  object DBGrid1: TDBGrid
-    Left = 153
-    Height = 6
-    Top = 50
-    Width = 1
-    Color = clWindow
-    Columns = <>
-    TabOrder = 1
   end
   object DBGrid: TDBGrid
     AnchorSideLeft.Control = Owner
@@ -45,14 +44,14 @@ object TableForm: TTableForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = DBNavigator
     Left = 0
-    Height = 208
+    Height = 192
     Top = 0
-    Width = 320
+    Width = 439
     Anchors = [akTop, akLeft, akRight, akBottom]
     Color = clWindow
     Columns = <>
     DataSource = DataSource
-    TabOrder = 2
+    TabOrder = 1
   end
   object SQLQuery: TSQLQuery
     FieldDefs = <>
