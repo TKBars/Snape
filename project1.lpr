@@ -16,7 +16,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TConnection, Connection);
-  Application.CreateForm(TTable, Table);
   Application.Run;
 end.
 

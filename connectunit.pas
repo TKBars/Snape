@@ -14,7 +14,6 @@ type
   TConnection = class(TDataModule)
     IBConnection: TIBConnection;
     SQLTransaction: TSQLTransaction;
-    procedure IBConnectionAfterConnect(Sender: TObject);
   private
     { private declarations }
   public
@@ -27,13 +26,6 @@ var
 implementation
 
 {$R *.lfm}
-
-{ TConnection }
-
-procedure TConnection.IBConnectionAfterConnect(Sender: TObject);
-begin
-
-end;
 
 end.
 

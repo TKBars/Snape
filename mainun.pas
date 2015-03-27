@@ -41,8 +41,11 @@ implementation
 
 procedure TMainForm.OpenTable(Sender: TObject);
 begin
-  MassOfForms[(Sender as TMenuItem).tag] := TTable.Create((Sender as TMenuItem).Caption, (Sender as TMenuItem).tag);
-  MassOfForms[(Sender as TMenuItem).tag].Show;
+  Application.CreateForm(TTableForm, AForms[(Sender as TMenuItem).tag]);
+  With AForms[(Sender as TMenuItem).tag] do begin
+    Caption := (Sender as TMenuItem).Caption;
+    Tag := (Sender as TMenuItem).tag;
+  end;
 end;
 
 procedure TMainForm.MAboutClick(Sender: TObject);

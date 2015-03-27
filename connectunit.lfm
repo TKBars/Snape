@@ -13,7 +13,6 @@ object Connection: TConnection
   object IBConnection: TIBConnection
     Connected = False
     LoginPrompt = False
-    AfterConnect = IBConnectionAfterConnect
     DatabaseName = 'TIMETABLE.fdb'
     KeepConnection = False
     Password = 'masterkey'

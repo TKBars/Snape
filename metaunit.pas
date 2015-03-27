@@ -8,7 +8,6 @@ uses
   Classes, SysUtils, db;
 
 type
-
   TMyField = class
     Caption, Name: string;
     Width: integer;

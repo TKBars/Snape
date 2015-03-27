@@ -1,12 +1,13 @@
-object Table: TTable
+object TableForm: TTableForm
   Left = 309
   Height = 239
   Top = 195
   Width = 320
-  Caption = 'Table'
+  Caption = 'TableForm'
   ClientHeight = 239
   ClientWidth = 320
   LCLVersion = '1.2.4.0'
+  Visible = True
   object DBNavigator: TDBNavigator
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
