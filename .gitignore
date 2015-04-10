@@ -221,3 +221,4 @@ lib/
 *.exe
 *.txt
 *.lps
+*.fdb
