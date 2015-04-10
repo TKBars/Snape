@@ -1,10 +1,10 @@
 object MainForm: TMainForm
-  Left = 204
-  Height = 240
-  Top = 213
+  Left = 327
+  Height = 313
+  Top = 180
   Width = 360
   Caption = 'MainForm'
-  ClientHeight = 220
+  ClientHeight = 293
   ClientWidth = 360
   Constraints.MinHeight = 240
   Constraints.MinWidth = 360
@@ -13,7 +13,7 @@ object MainForm: TMainForm
   LCLVersion = '1.2.4.0'
   object FunImg: TImage
     Left = 0
-    Height = 220
+    Height = 293
     Top = 0
     Width = 360
     AntialiasingMode = amOn
