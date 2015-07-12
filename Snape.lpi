@@ -6,10 +6,9 @@
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="project1"/>
+      <Title Value="Snape"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
-      <Icon Value="0"/>
     </General>
     <i18n>
       <EnableI18N LFM="False"/>
@@ -41,17 +40,17 @@
     </RequiredPackages>
     <Units Count="4">
       <Unit0>
-        <Filename Value="project1.lpr"/>
+        <Filename Value="Snape.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="project1"/>
+        <UnitName Value="Snape"/>
       </Unit0>
       <Unit1>
-        <Filename Value="mainun.pas"/>
+        <Filename Value="mainunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="MainUn"/>
+        <UnitName Value="MainUnit"/>
       </Unit1>
       <Unit2>
         <Filename Value="connectunit.pas"/>
@@ -62,12 +61,12 @@
         <UnitName Value="ConnectUnit"/>
       </Unit2>
       <Unit3>
-        <Filename Value="unittable.pas"/>
+        <Filename Value="tableunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="TableForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="UnitTable"/>
+        <UnitName Value="TableUnit"/>
       </Unit3>
     </Units>
   </ProjectOptions>
@@ -75,7 +74,7 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="project1"/>
+      <Filename Value="Snape"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>

@@ -1,4 +1,4 @@
-program project1;
+program Snape;
 
 {$mode objfpc}{$H+}
 
@@ -7,13 +7,14 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, MainUn, ConnectUnit, unittable;
+  Forms, MainUnit, ConnectUnit, TableUnit;
 
 {$R *.res}
 
 begin
   RequireDerivedFormResource := True;
   Application.Initialize;
+  Application.Title := 'Snape';
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TConnection, Connection);
   Application.Run;

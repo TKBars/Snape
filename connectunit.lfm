@@ -1,17 +1,17 @@
 object Connection: TConnection
   OldCreateOrder = False
   Height = 150
-  HorizontalOffset = 251
-  VerticalOffset = 157
+  HorizontalOffset = 1605
+  VerticalOffset = 149
   Width = 240
   object SQLTransaction: TSQLTransaction
-    Active = True
+    Active = False
     Database = IBConnection
     left = 144
     top = 40
   end
   object IBConnection: TIBConnection
-    Connected = True
+    Connected = False
     LoginPrompt = False
     DatabaseName = 'TIMETABLE.fdb'
     KeepConnection = False

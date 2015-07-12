@@ -26,12 +26,12 @@ type
 
   TMyTable = class
     Caption, Name: string;
-    MassOfFields: array of TMyField;
+    AFields: array of TMyField;
     constructor Create(TabCaption, TabName: string);
     function AddField(TabCaption, TabName: string; TabWidth: integer;
       FiFieldType: TFieldType; FiFarTable: TMyTable = nil; FiFarField: string = ''; FiJoinKey: string = ''): TMyField;
     function GetSQL(): string;
-    function GetField: string;
+    function GetFieldName(FieldID: integer): string;
   end;
 
 var
@@ -48,9 +48,9 @@ constructor TMyTable.Create(TabCaption, TabName: string);
 function TMyTable.AddField(TabCaption, TabName: string; TabWidth: integer;
   FiFieldType: TFieldType; FiFarTable: TMyTable = nil; FiFarField: string = ''; FiJoinKey: string = ''): TMyField;
 begin
-  SetLength(MassOfFields, Length(MassOfFields)+1);
-  MassOfFields[High(MassOfFields)] := TMyField.Create(TabCaption, TabName, TabWidth, FiFieldType, FiFarTable, FiFarField, FiJoinKey);
-  Result := MassOfFields[High(MassOfFields)];
+  SetLength(AFields, Length(AFields)+1);
+  AFields[High(AFields)] := TMyField.Create(TabCaption, TabName, TabWidth, FiFieldType, FiFarTable, FiFarField, FiJoinKey);
+  Result := AFields[High(AFields)];
 end;
 
 function TMyTable.GetSQL: string;
@@ -58,34 +58,31 @@ function TMyTable.GetSQL: string;
   i: integer;
 begin
   Result := 'Select ';
-  for i := 0 to High(MassOfFields) do begin
+  for i := 0 to High(AFields) do begin
     if i > 0 then Result += ', ';
-    if MassOfFields[i].FarTable = nil then
+    if AFields[i].FarTable = nil then
       Result += Name
     else
-      Result += MassOfFields[i].FarTable.Name;
-    Result += '.' + MassOfFields[i].Name;
+      Result += AFields[i].FarTable.Name;
+    Result += '.' + AFields[i].Name;
   end;
+
   Result += ' from ' + Name;
-  for i := 0 to High(MassOfFields) do begin
-    if MassOfFields[i].FarTable <> nil then
-      Result += ' inner join ' + MassOfFields[i].FarTable.Name
-      + ' on ' + Name + '.' + MassOfFields[i].FarField
-      + ' = ' + MassOfFields[i].FarTable.Name + '.' + MassOfFields[i].FarKey;
+  for i := 0 to High(AFields) do begin
+    if AFields[i].FarTable <> nil then
+      Result += ' inner join ' + AFields[i].FarTable.Name
+      + ' on ' + Name + '.' + AFields[i].FarField
+      + ' = ' + AFields[i].FarTable.Name + '.' + AFields[i].FarKey;
   end;
 end;
 
-function TMyTable.GetField: string;
-var
-i: integer;
+function TMyTable.GetFieldName(FieldID: integer): string;
 begin
-  for i := 0 to High(MassOfFields) do
-  begin
-    if MassOfFields[i].FarTable = nil then
-    Result += Name
+  if AFields[FieldID].FarTable = nil then
+    Result := Name
   else
-    Result += MassOfFields[i].FarTable.Name;
-  end;
+    Result := AFields[FieldID].FarTable.Name;
+  Result += '.' + AFields[FieldID].Name;
 end;
 
 constructor TMyField.Create(FiCaption, FiName: string; FiWidth: integer;

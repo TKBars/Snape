@@ -1,4 +1,4 @@
-unit MainUn;
+unit MainUnit;
 
 {$mode objfpc}{$H+}
 
@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, sqldb, db, FileUtil, Forms, Controls, Graphics, Dialogs,
-  DBGrids, StdCtrls, Buttons, Menus, ExtCtrls, ConnectUnit, metaunit, UnitTable;
+  DBGrids, StdCtrls, Buttons, Menus, ExtCtrls, ConnectUnit, metaunit, TableUnit;
 
 type
 

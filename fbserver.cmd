@@ -1,0 +1,1 @@
+start /d"C:\Program Files (x86)\Firebird\Firebird_2_5\bin" fbserver.exe -a

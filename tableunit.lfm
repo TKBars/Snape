@@ -1,0 +1,180 @@
+object TableForm: TTableForm
+  Left = 220
+  Height = 480
+  Top = 69
+  Width = 601
+  Caption = 'GridForm'
+  ClientHeight = 480
+  ClientWidth = 601
+  Constraints.MinHeight = 480
+  Constraints.MinWidth = 600
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnShow = ShowForm
+  LCLVersion = '1.2.4.0'
+  object DBNavigator: TDBNavigator
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = DBGrid
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = -176
+    Height = 31
+    Top = 441
+    Width = 352
+    Anchors = [akBottom]
+    BevelOuter = bvNone
+    BorderSpacing.Top = 8
+    BorderSpacing.Bottom = 8
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 31
+    ClientWidth = 352
+    DataSource = DataSource
+    Options = []
+    TabOrder = 0
+  end
+  object DBGrid: TDBGrid
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = FiltSort
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = DBNavigator
+    Left = 0
+    Height = 277
+    Top = 156
+    Width = 601
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Top = 8
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSource
+    TabOrder = 1
+  end
+  object FiltList: TListBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 0
+    Height = 85
+    Top = 0
+    Width = 601
+    Anchors = [akTop, akLeft, akRight]
+    ItemHeight = 0
+    OnSelectionChange = FiltersListSelectionChange
+    TabOrder = 2
+  end
+  object FiltField: TComboBox
+    AnchorSideRight.Control = FiltOperation
+    Left = 8
+    Height = 23
+    Top = 93
+    Width = 185
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 12
+    ItemHeight = 15
+    Style = csDropDownList
+    TabOrder = 3
+  end
+  object FiltOperation: TComboBox
+    Left = 205
+    Height = 23
+    Top = 93
+    Width = 79
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 12
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      '='
+      '<>'
+      '>='
+      '>'
+      '<='
+      '<'
+    )
+    Style = csDropDownList
+    TabOrder = 4
+    Text = '='
+  end
+  object FiltSort: TComboBox
+    Left = 8
+    Height = 23
+    Top = 125
+    Width = 480
+    ItemHeight = 15
+    TabOrder = 5
+  end
+  object Add: TButton
+    Left = 502
+    Height = 25
+    Top = 93
+    Width = 88
+    Caption = 'Добавить'
+    OnClick = AddClick
+    TabOrder = 6
+  end
+  object Clear: TButton
+    Left = 502
+    Height = 25
+    Top = 123
+    Width = 88
+    Caption = 'Очистить'
+    OnClick = ClearClick
+    TabOrder = 7
+  end
+  object ApplyFilter: TButton
+    AnchorSideTop.Control = DBGrid
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 497
+    Height = 33
+    Top = 441
+    Width = 92
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 8
+    BorderSpacing.Right = 12
+    Caption = 'Применить'
+    OnClick = ApplyFilterClick
+    TabOrder = 8
+  end
+  object DescBox: TCheckBox
+    Left = 200
+    Height = 19
+    Top = 441
+    Width = 82
+    Caption = 'Descending'
+    TabOrder = 9
+  end
+  object FiltConst: TEdit
+    AnchorSideRight.Control = Add
+    Left = 296
+    Height = 23
+    Top = 93
+    Width = 194
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Right = 12
+    TabOrder = 10
+  end
+  object SQLQuery: TSQLQuery
+    FieldDefs = <>
+    Database = Connection.IBConnection
+    Transaction = Connection.SQLTransaction
+    Params = <>
+    left = 112
+    top = 328
+  end
+  object DataSource: TDataSource
+    DataSet = SQLQuery
+    left = 32
+    top = 328
+  end
+end
